@@ -1,0 +1,129 @@
+---
+output: pdf_document
+---
+# Levin *et al* reanalyses
+
+This document can be executed to a pdf or html file in RStudio (or with the `knitr` package at the command line).
+
+## Reproducing previous results
+
+The first goal is to reproduce the previous results to ensure that I understand their methods
+
+### Figure 4c data
+
+```{r}
+Phase = as.matrix(read.table("data_processed/Figure_4c_mode.txt", header=T))
+Ortho = as.matrix(read.table("data_processed/Figure_4c_orthology.txt", header=T))
+
+dim(Phase)
+dim(Ortho)
+```
+
+First, check to see if there are any elements that are 0 in one table but not the other.
+
+```{r}
+sum((Phase>0) != (Ortho>0))
+```
+
+There aren't. This verifies that every annotated ortholog present in each species is categorized as belonging to one of the three phases.
+
+
+```{r}
+table(Phase)
+
+nrow(Phase[rowSums(Phase)>0,]) # number of nonzero rows
+
+```
+
+From Levin et al:
+
+> To compare gene expression across these species, we delineated 11,139 orthologous protein families, with each orthologous family having representatives from an average of six species.
+
+Question: What is the source of the discrepancy between the reported number 11,139 in the manuscript and the number of genes (ie, rows) in this Figure_4c matrix, ie `r nrow(Phase[rowSums(Phase)>0,])`? Were there additional filters applied?
+
+
+#### C. elegans and D. melanogaster comparison
+
+Here I try to replicate the example described by Levin et al.:
+
+> Finally, we measured the extent of evolutionary change within the two conserved phases and the mid-developmental transition by determining whether orthologues annotated for a particular temporal category in one species are also annotated to the same temporal category in another species. Figure 4c shows an example of this analysis for D. melanogaster and C. elegans. For 4,395 orthologues delineated between these two species, the early phase, mid-developmental transition, and the late phase expression account for 51%, 14%, and 35% of the C. elegans orthologues, respectively. A total of 28% of the orthologues are annotated to the early phase in both C. elegans and D. melanogaster, while by chance only 22% are expected given the fraction of genes in each category across the species (Fig. 4c). In contrast, 3% were expected to be conserved at the mid-developmental transition at random, and 3% were observed.
+
+```{r}
+# Sample the columns for these two species
+DC = Phase[,c(2,3)]
+colnames(DC)
+
+# sample only rows that have phase annotations for both
+
+DC = DC[(DC[,1]>0) & (DC[,2]>0),]
+nrow(DC)
+```
+
+So the number of genes selected is consistent with the reported number.
+
+Now calculate the fraction of genes in each phase for each species.
+
+```{r}
+colnames(DC)[1]
+table(DC[,1])/sum(DC[,1])
+```
+
+Question: These values do not correspond to the 51%, 14%, and 35% reported in the manuscript for C. elegans. What is the source of the discrepancy?
+
+```{r}
+colnames(DC)[2]
+table(DC[,2])/sum(DC[,2])
+
+```
+
+
+### Figure 4d data
+
+```{r}
+D = read.table("data_processed/Figure_4d_data.txt", header=T)
+ks.test(D$Early, D$Mid, alternative="less")
+
+ks.test(D$Late, D$Mid, alternative="less")
+```
+
+The KS tests as reproduced here are still significant, but the p values are much lower than those published. Levin et al. stated:
+
+> we found that the mid-developmental transition profiles are significantly less conserved than the early and late phase expression (Fig. 4d, P<10-6 compared with the early phase and P<10-12 with the late phase, Kolmogorov–Smirnov test)
+
+Question: How was the published P value calculated? Was it two sided? Was it on a different data set?
+
+## Additional analyses
+
+I conducted several additional analyses to address specific methodological concerns.
+
+### Test method
+
+The primary results are based on the box plot in Figure 4d and the corresponding KS test. The box plots for each temporal phase largely overlap and there is little differentiation between the distributions apparent in this figure. The published KS test did reject the hypothesis that each is drawn from the same distribution. There are a couple problems with using the KS test in this context, though:
+
+- The KS test doesn't just test whether one distribution is greater than the other, it also tests whether the shape of the distributions are the same. This is a much more specific null hypothesis than what is discussed in the paper. The null hypothesis would be rejected, for example, if the two distributions had the same mean but different variance.
+
+- The samples in this dataset are matched (ie, for each pairwise comparison there is a early, mid, and late expression value). The KS test is for unmatched samples. Nonparametric tests for matched samples include the Sign test and the Wilcoxon Signed Rank Test. See, for example,  [http://sphweb.bumc.bu.edu/otlt/MPH-Modules/BS/BS704_Nonparametric/BS704_Nonparametric_print.html](this) explanation.
+
+Here I rerun the analyses taking the matched samples into account.
+
+```{r}
+
+hist(D$Early - D$Mid)
+wilcox.test(D$Early, D$Mid, alternative="greater", paired=T)
+binom.test(sum((D$Early - D$Mid)>0), length(D$Early - D$Mid)) # sign test
+
+hist(D$Late - D$Mid)
+wilcox.test(D$Late, D$Mid, alternative="greater", paired=T)
+binom.test(sum((D$Late - D$Mid)>0), length(D$Late - D$Mid)) # sign test
+```
+
+The Early-Mid comparison is barely significant to not significant, while the Late-Mid comparison is still significant.
+
+
+## Software versions
+
+This manuscript was computed on `r format(Sys.time(), "%a %b %d %X %Y")` with the following R package versions.
+
+```{r session_summary, echo=FALSE, comment=NA}
+	sessionInfo()
+```
