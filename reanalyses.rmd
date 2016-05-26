@@ -102,7 +102,7 @@ The primary results are based on the box plot in Figure 4d and the corresponding
 
 - The KS test doesn't just test whether one distribution is greater than the other, it also tests whether the shape of the distributions are the same. This is a much more specific null hypothesis than what is discussed in the paper. The null hypothesis would be rejected, for example, if the two distributions had the same mean but different variance.
 
-- The samples in this dataset are matched (ie, for each pairwise comparison there is a early, mid, and late expression value). The KS test is for unmatched samples. Nonparametric tests for matched samples include the Sign test and the Wilcoxon Signed Rank Test. See, for example,  [http://sphweb.bumc.bu.edu/otlt/MPH-Modules/BS/BS704_Nonparametric/BS704_Nonparametric_print.html](this) explanation.
+- The samples in this dataset are matched (ie, for each pairwise comparison there is a early, mid, and late expression value). The KS test is for unmatched samples. In this instance, the question isn't whether the distribution of pairwise values as a higher cumulative distribution function for one phase versues the other, as the KS test can evaluate, but whether each value in one phases tends to be higher or lower than its matched value in another phase. Nonparametric tests for matched samples include the Sign test and the Wilcoxon Signed Rank Test. See, for example,  [this](http://sphweb.bumc.bu.edu/otlt/MPH-Modules/BS/BS704_Nonparametric/BS704_Nonparametric_print.html) explanation.
 
 Here I rerun the analyses taking the matched samples into account.
 
