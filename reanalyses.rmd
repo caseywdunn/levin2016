@@ -214,7 +214,7 @@ pb = pb + coord_flip() + ggtitle("(b) New, without ctenophore")
 
 multiplot(pa, pb, cols=1)
 
-pdf("Figure1.pdf", width=4, height=4)
+pdf("Figure1_raw.pdf", width=4, height=4)
 multiplot(pa, pb, cols=1)
 dev.off()
 
