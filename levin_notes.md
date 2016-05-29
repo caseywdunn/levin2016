@@ -17,9 +17,13 @@ In each pairwise comparison between two species, only the orthologs shared by th
 
 Question: What is this correlation between? For example, are X and Y the phases (eg 1=early,2=mid,3=late) for each shared ortholog?
 
+Author answer: "This is a correlation between the vectors from the expression matrices defined as described in the Methods section ‘developmental gene expression profiles’; i.e. X and Y are not the phases but the actual gene expression values."
+
 > Finally, *we measured the extent of evolutionary change within the two conserved phases and the mid-developmental transition by determining whether orthologues annotated for a particular temporal category in one species are also annotated to the same temporal category in another species*. Figure 4c shows an example of this analysis for D. melanogaster and C. elegans. For 4,395 orthologues delineated between these two species, the early phase, mid-developmental transition, and the late phase expression account for 51%, 14%, and 35% of the C. elegans orthologues, respectively. A total of 28% of the orthologues are annotated to the early phase in both C. elegans and D. melanogaster, while by chance only 22% are expected given the fraction of genes in each category across the species (Fig. 4c). In contrast, 3% were expected to be conserved at the mid-developmental transition at random, and 3% were observed. 
 
 Question: How did you calculate the numbers that are expected by chance?
+
+Author answer: "The expectation that both orthologs are of the same phase is the product of the frequency of the phase in species 1 and the frequency of the phase in species 2."
 
 > The log-odds ratios between observed and expected for the early phase and the mid-developmental transition between C. elegans and D. melanogaster are thus 0.35 and 0, respectively. Comparing the log-odds ratios across the three temporal categories for each of the 45 pairs of the ten species, we found that the mid-developmental transition profiles are significantly less conserved than the early and late phase expression (Fig. 4d, P < 10−6 compared with the early phase and P < 10−12 with the late phase, Kolmogorov–Smirnov test). 
 
@@ -54,11 +58,15 @@ Question: How did you calculate the numbers that are expected by chance?
 
 Question: Are only the dynamic genes considered further? The text isn't clear on this. Specifically, is Figure 4 and associated analyses based only on dynamic genes?
 
+Author answer: "The set of dynamic genes is used for some of supplementary analyses relating to figure 3. They are not used in the Figure 4 analyses."
+
 > *Standardized expression was used in analysis where noted: to generate a standardized expression, the mean expression value was subtracted from each expression value and the results were divided by the standard deviation.* To generate the phasegrams shown in Fig. 2 we first standardized the log10 profiles by subtracting the mean and dividing by the standard deviation. We next computed the first two principal components of this expression data; since the profiles were standardized, the genes form a circle. The genes are then sorted according to their angle from the origin in this space. *A gene expression profile was mapped to a temporal phase (early, transition, or late) by computing the correlation with the three idealized profiles shown in [Extended Data Fig. 5](http://www.nature.com/nature/journal/v531/n7596/fig_tab/nature16994_SF5.html) and assigning it to the pattern exhibiting the highest correlation and thus best match.*
 
 These three profiles correspond to peak early, peak mid, and peak late. Other profiles, eg genes that peak early and late but have lower mid expression, are not considered. 
 
 Question: Were genes that strongly deviated from these three profiles excluded? Was there any test of fit or significance of change in expression that was considered? This question relates to the one above about which analyses the "dynamic gene" filter was applied to.
+
+Author answer: "To classify a gene to the three phases strongly deviating genes were not excluded and no goodness of fit test was made."
 
 >
 >**Mid-developmental transition detection**
@@ -73,6 +81,6 @@ Question: Were genes that strongly deviated from these three profiles excluded? 
 >
 >For each of 5,745 PFAMs, we computed an enrichment profile throughout time, and for each species, as follows. For each of the twenty expression windows of the matrix of standardized log10 expression values of the dynamic genes, we marked genes with expression above 0.5 as expressed. We then calculated the fraction of the genes within this set that contain genes annotated to the PFAM domain. A temporal phase was annotated using supervised clustering using the same approach shown in Extended Data Fig. 5. For the transcription factor families shown in Fig. 4d the following PFAMs were used: 'Homeobox domain', 'GATA zinc finger', 'Ligand-binding domain of nuclear hormone receptor', 'Helix–loop–helix DNA-binding domain', 'bZIP transcription factor', 'Zinc finger, C4 type (two domains)', 'Zinc finger, C2H2 type', and 'T-box'. 
 
-The authors indicate this is a typo - this text is relevant to figures 4a and 4b, not 4d.
+Correction: The authors indicate this is a typo - this text is relevant to figures 4a and 4b, not 4d.
 
 >For this analysis, we searched for enrichment up to three windows before and after the inferred transition, and kept the most significant P value for each TF family (hypergeometric distribution).

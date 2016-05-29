@@ -16,7 +16,7 @@ The goals of these reanalyses are to make sure that I understand the methods of 
 
 ## Repository contents
 
-This repository includes the following files:
+This repository includes the following files. Throughout, pending questions to evin *et al*. are noted with `Question:`. Corrections to the manuscript text and analyses are noted with `Correction:`.
 
 - [reanalyses.rmd](./reanalyses.rmd), an executable document containing the code and notes on my reanalyses. The results of executing this code can be viewed at [reanalyses.pdf](./reanalyses.pdf?raw=true).
 
