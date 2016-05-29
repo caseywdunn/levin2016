@@ -16,9 +16,13 @@ The goals of these reanalyses are to make sure that I understand the methods of 
 
 ## Repository contents
 
-This repository includes the following files. Throughout, pending questions to evin *et al*. are noted with `Question:`. Corrections to the manuscript text and analyses are noted with `Correction:`.
+This repository includes the following files:
 
-- [reanalyses.rmd](./reanalyses.rmd), an executable document containing the code and notes on my reanalyses. The results of executing this code can be viewed at [reanalyses.pdf](./reanalyses.pdf?raw=true).
+- [communication_arising.md](./communication_arising.md), the draft of the manuscript we plan to submit.
+
+- [reanalyses.html](https://rawgit.com/caseywdunn/levin2016/master/reanalyses.html), the notebook containing our analyses.
+
+- [reanalyses.rmd](./reanalyses.rmd), an executable document containing the code and notes on my reanalyses. 
 
 - [levin_notes.md](./levin_notes.md), notes on relevant excerpts from the Levin *et al*. manuscript.
 
