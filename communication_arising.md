@@ -34,7 +34,21 @@ Levin *et al.* helpfully provided data and clarification on methods. We obtained
 
 ### References
 
-
+1.	Levin, M. et al. The mid-developmental transition and the evolution of animal body plans. Nature 531, 637–641 (2016).
+2.	Kalinka, A. T. et al. Gene expression divergence recapitulates the developmental hourglass model. Nature 468, 811–814 (2010).
+3.	Domazet-Lošo, T. & Tautz, D. A phylogenetically based transcriptome age index mirrors ontogenetic divergence patterns. Nature 468, 815–818 (2010).
+4.	Raff, R. A. The shape of life: genes, development and the evolution of animal
+form. (University of Chicago, 1996).
+5.	Duboule, D. Temporal colinearity and the phylotypic progression: a basis for the stability of a vertebrate Bauplan and the evolution of morphologies through heterochrony. Development 1994, 135–142 (1994).
+6.	Hejnol, A. & Dunn, C. W. Animal Evolution: Are Phyla Real? Curr. Biol. 26, R424–R426 (2016).
+7.	Modern Phylogenetic Comparative Methods and Their Application in Evolutionary Biology. (Springer Berlin Heidelberg, 2014). doi:10.1007/978-3-662-43550-2
+8.	Robinson, M. D., McCarthy, D. J. & Smyth, G. K. edgeR: a Bioconductor package for differential expression analysis of digital gene expression data. Bioinformatics 26, 139–140 (2009).
+9.	Martindale, M. Q. & Henry, J. Q. in Evolutionary Developmental Biology of Invertebrates 1: Introduction, Non-Bilateria, Acoelomorpha, Xenoturbellida, Chaetognatha (Springer Vienna, 2015).
+10.	Dunn, C. W., Leys, S. P. & Haddock, S. H. D. The hidden biology of sponges and ctenophores. Trends Ecol. Evol. 30, 282–291 (2015).
+11.	Telford, M. J. & Budd, G. E. The place of phylogeny and cladistics in Evo-Devo research. Int. J. Dev. Biol. 47, 479–490 (2003).
+12.	Hejnol, A. & Lowe, C. J. Embracing the comparative approach: how robust phylogenies and broader developmental sampling impacts the understanding of nervous system evolution. Philos. Trans. R. Soc. Lond., B, Biol. Sci. 370, 20150045–20150045 (2015).
+13.	Dunn, C. W., Luo, X. & Wu, Z. Phylogenetic analysis of gene expression. Integr. Comp. Biol. 53, 847–856 (2013).
+14.	Felsenstein, J. Phylogenies and the Comparative Method. American Naturalist 125, 1–15 (1985).
 
 ### Author information
 
@@ -53,18 +67,4 @@ Competing Financial Interests Declared none.
 Correspondence to: Casey W. Dunn, casey_dunn@brown.edu
 
 
-1.	Levin, M. et al. The mid-developmental transition and the evolution of animal body plans. Nature 531, 637–641 (2016).
-2.	Kalinka, A. T. et al. Gene expression divergence recapitulates the developmental hourglass model. Nature 468, 811–814 (2010).
-3.	Domazet-Lošo, T. & Tautz, D. A phylogenetically based transcriptome age index mirrors ontogenetic divergence patterns. Nature 468, 815–818 (2010).
-4.	Raff, R. A. The shape of life: genes, development and the evolution of animal
-form. (University of Chicago, 1996).
-5.	Duboule, D. Temporal colinearity and the phylotypic progression: a basis for the stability of a vertebrate Bauplan and the evolution of morphologies through heterochrony. Development 1994, 135–142 (1994).
-6.	Hejnol, A. & Dunn, C. W. Animal Evolution: Are Phyla Real? Curr. Biol. 26, R424–R426 (2016).
-7.	Modern Phylogenetic Comparative Methods and Their Application in Evolutionary Biology. (Springer Berlin Heidelberg, 2014). doi:10.1007/978-3-662-43550-2
-8.	Robinson, M. D., McCarthy, D. J. & Smyth, G. K. edgeR: a Bioconductor package for differential expression analysis of digital gene expression data. Bioinformatics 26, 139–140 (2009).
-9.	Martindale, M. Q. & Henry, J. Q. in Evolutionary Developmental Biology of Invertebrates 1: Introduction, Non-Bilateria, Acoelomorpha, Xenoturbellida, Chaetognatha (Springer Vienna, 2015).
-10.	Dunn, C. W., Leys, S. P. & Haddock, S. H. D. The hidden biology of sponges and ctenophores. Trends Ecol. Evol. 30, 282–291 (2015).
-11.	Telford, M. J. & Budd, G. E. The place of phylogeny and cladistics in Evo-Devo research. Int. J. Dev. Biol. 47, 479–490 (2003).
-12.	Hejnol, A. & Lowe, C. J. Embracing the comparative approach: how robust phylogenies and broader developmental sampling impacts the understanding of nervous system evolution. Philos. Trans. R. Soc. Lond., B, Biol. Sci. 370, 20150045–20150045 (2015).
-13.	Dunn, C. W., Luo, X. & Wu, Z. Phylogenetic analysis of gene expression. Integr. Comp. Biol. 53, 847–856 (2013).
-14.	Felsenstein, J. Phylogenies and the Comparative Method. American Naturalist 125, 1–15 (1985).
+
