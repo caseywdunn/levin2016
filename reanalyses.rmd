@@ -9,16 +9,11 @@ library(plotly)
 
 by [Casey W. Dunn](http://dunnlab.org/)
 
- 
-
 Please see the [git repository](https://github.com/caseywdunn/levin2016) for additional files related to this document, including data and [source code for all analyses](https://github.com/caseywdunn/levin2016/blob/master/reanalyses.rmd).
 
 This notebook describes reanalyses of Levin *et al*. 2016:
 
 > Levin M, Anavy L, Cole AG, Winter E, Mostov N, Khair S, Senderovich N, Kovalev E, Silver DH, Feder M, et al. 2016. The mid-developmental transition and the evolution of animal body plans. Nature 531: 637-641. [doi:10.1038/nature16994](http://dx.doi.org/10.1038/nature16994)
-
-
-These analyses are in support of a draft [Communications Arising](www.nature.com/nature/authors/gta/commsarising.html) manuscript that we plan to Nature in reply to Levin *et al*. The draft of the manuscript is available at https://github.com/caseywdunn/communication_arising.md . Feedback on the analyses and text is welcome. 
 
 We addressed concerns regarding the study design of Levin *et al*. in a previous manuscript:
 
