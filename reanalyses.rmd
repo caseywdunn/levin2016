@@ -38,7 +38,7 @@ boxplot(as.matrix(D[,3:5]))
 ```
 
 The KS p-value for the early-mid comparison is `r format(ks.test(D$Early, D$Mid)$p.value, digits=3)`, while the p-value for the late-mid comparison is `r format(ks.test(D$Late, D$Mid)$p.value, digits=3, scientific=TRUE)`.
-The KS tests as reproduced here are still significant, but the p values are much lower than those published by Levin *et al.*:
+The KS tests as reproduced here are still significant, but the p values are much less significant than those published by Levin *et al.*:
 
 > we found that the mid-developmental transition profiles are significantly less conserved than the early and late phase expression (Fig. 4d, P<10-6 compared with the early phase and P<10-12 with the late phase, Kolmogorov–Smirnov test)
 
