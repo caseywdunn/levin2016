@@ -227,13 +227,13 @@ pb = ggplot(Dm_no_ct, aes(phase, similarity)) + geom_boxplot() + ggtitle("(b) Ne
 
 ### Overview of comparisons
 
-Here I take a look at the matched values for each comparison.
+Here I take a look at the matched values for each comparison. Mouse over the points in this plot for more information, including which species pairs they are for.
 
-```{r mathched}
+```{r mathched, echo=FALSE}
 
 
-ggplot(data=Dm, aes(x=phase,y=similarity, group=interaction(Species_A, Species_B))) + geom_point() + geom_line()
-#ggplotly()
+overview = ggplot(data=Dm, aes(x=phase,y=similarity, group=interaction(Species_A, Species_B), text=paste(Species_A, Species_B, sep="-"))) + geom_point(color=color) + geom_line()
+ggplotly( overview )
 
 inverse_hourglass = D[ (D$Mid<D$Early) & (D$Mid < D$Late),]
 inverse_hourglass
