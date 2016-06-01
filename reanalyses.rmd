@@ -71,7 +71,7 @@ I derived the `Figure_4d_data.txt` file from `Figure_4d_data_full.txt` by removi
     [i,p]=kstest2(A.Late,A.Mid)
     # p = 2.5199e-06
 
-The R and matlab results are consistent with each other when analyzing `Figure_4d_data.txt`, indicating that my results don't differ from those of Levin *et al.* due to software differences and that the discrepency is due to the duplicated values.
+The R and matlab results are consistent with each other when analyzing `Figure_4d_data.txt`, indicating that my results don't differ from those of Levin *et al.* due to software differences and that the discrepancy is due to the duplicated values.
 
 
 ### Evaluating the test method
@@ -227,30 +227,39 @@ pb = ggplot(Dm_no_ct, aes(phase, similarity)) + geom_boxplot() + ggtitle("(b) Ne
 
 ### Overview of comparisons
 
-Here I take a look at the matched values for each comparison. Mouse over the points in this plot for more information, including which species pairs they are for.
+<a name="overview"></a>
 
-```{r mathched, echo=FALSE}
+Based in the results shown in their [Figure 4d](http://www.nature.com/nature/journal/v531/n7596/fig_tab/nature16994_F4.html), Levin *et al.* concluded that the "mid" distribution was significantly less than the "early" and "late" distributions, and that a low "mid" value is a general evolutionary pattern for animals. 
+
+When all the annotated points are shown in the interactive plot below, however, it becomes apparent that minimum similarity at the "mid" point is not a general pattern. Many pairwise comparisons show other patterns, and the low values in the "mid" distribution are dominated by comparisons that include the ctenophore (shown in red). Mouse over the points in this plot for more information, including which species pair each point is for. Lines connect the same species pair comparisons across developmental phases.
+
+```{r matched, echo=FALSE}
 
 
-overview = ggplot(data=Dm, aes(x=phase,y=similarity, group=interaction(Species_A, Species_B), text=paste(Species_A, Species_B, sep="-"))) + geom_point(color=color) + geom_line()
+overview = ggplot(data=Dm, aes(x=phase,y=similarity, group=interaction(Species_A, Species_B), text=paste(Species_A, Species_B, sep="-")))  + geom_line(size=0.5) + geom_point(color=color)
 ggplotly( overview )
 
 inverse_hourglass = D[ (D$Mid<D$Early) & (D$Mid < D$Late),]
-inverse_hourglass
-nrow(inverse_hourglass)
 
-nrow(inverse_hourglass[inverse_hourglass$Species_B == "Ctenophores",])
+
+```
+
+Only `r nrow(inverse_hourglass)` of the `r nrow(D)` comparisons show an inverse hourglass pattern. Of these, `r nrow(inverse_hourglass[inverse_hourglass$Species_B == "Ctenophores",])` are for pairs that include the ctenophore. 
+
+The results for the subset of comparisons that show the inverse hourglass pattern is below.
+
+```{r matched_table, echo=FALSE}
+
+inverse_hourglass
 
 table(c(as.character(inverse_hourglass$Species_A), as.character(inverse_hourglass$Species_B)))
 
 ```
 
-So only `r nrow(inverse_hourglass)` of the `r nrow(D)` comparisons show an inverse hourglass patter. Of these, `r nrow(inverse_hourglass[inverse_hourglass$Species_B == "Ctenophores",])` are for pairs that include the ctenophore.
-
 
 ## Figure 4c data
 
-These data are an upstream intermediate that the 4d data are dervived from. I explored these data a bit to better understand the broader analysis workflow.
+These data are an upstream intermediate that the 4d data are derived from. I explored these data a bit to better understand the broader analysis workflow.
 
 ```{r preprocess_4c}
 Phase = as.matrix(read.table("data_processed/Figure_4c_mode.txt", header=T))
