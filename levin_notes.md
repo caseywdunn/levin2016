@@ -19,6 +19,14 @@ Question: What is this correlation between? For example, are X and Y the phases 
 
 Author answer: "This is a correlation between the vectors from the expression matrices defined as described in the Methods section ‘developmental gene expression profiles’; i.e. X and Y are not the phases but the actual gene expression values."
 
+> To systematically compare gene expression across species, we computed the correlation across orthologous gene expression throughout development for each pair of species. For example, comparison of tardigrade and annelid embryonic transcriptomes revealed two conserved phases of expression in these two species—early and late—separated by a sharp mid-developmental transition (P<10<sup>−10</sup>, Kolmogorov–Smirnov test, Fig. 3, inset; Extended Data Fig. 3). 
+
+Question: How was this test done, ie what is being compared? 
+
+
+>  Overall, the dual-phase pattern holds for most pairwise species comparisons, with the exception of 9 out of 45 (Extended Data Fig. 3), and is robust to the parameters used for constructing the sliding window expression profiles and to possible biases in the embryo sampling (Extended Data Fig. 4a, b).
+
+
 > Finally, *we measured the extent of evolutionary change within the two conserved phases and the mid-developmental transition by determining whether orthologues annotated for a particular temporal category in one species are also annotated to the same temporal category in another species*. Figure 4c shows an example of this analysis for D. melanogaster and C. elegans. For 4,395 orthologues delineated between these two species, the early phase, mid-developmental transition, and the late phase expression account for 51%, 14%, and 35% of the C. elegans orthologues, respectively. A total of 28% of the orthologues are annotated to the early phase in both C. elegans and D. melanogaster, while by chance only 22% are expected given the fraction of genes in each category across the species (Fig. 4c). In contrast, 3% were expected to be conserved at the mid-developmental transition at random, and 3% were observed. 
 
 Question: How did you calculate the numbers that are expected by chance?
@@ -28,6 +36,59 @@ Author answer: "The expectation that both orthologs are of the same phase is the
 > The log-odds ratios between observed and expected for the early phase and the mid-developmental transition between C. elegans and D. melanogaster are thus 0.35 and 0, respectively. Comparing the log-odds ratios across the three temporal categories for each of the 45 pairs of the ten species, we found that the mid-developmental transition profiles are significantly less conserved than the early and late phase expression (Fig. 4d, P < 10−6 compared with the early phase and P < 10−12 with the late phase, Kolmogorov–Smirnov test). 
 
 > Our results are consistent with an inverse hourglass model for metazoan body plans (Fig. 4e) in which the molecular components that comprise early and late embryogenesis are more conserved, and the signalling pathways and transcription factors acting within the mid- developmental transition are variable across major animal lineages (Fig. 4a, b). Interestingly, the model summarizing comparisons made within a phylum, where gene expression differences across species are minimal at the phylotypic period, has an inverse pattern23. Consequently, a ‘phylum’ may be defined as a set of species sharing the same signals and transcription factor networks during the mid-developmental transition. As a result, transcriptional variance will have an hourglass shape within the phylum, and the inverse is seen when comparing species across phyla (Fig. 4e). A non-phylum lower taxon would not meet these criteria since an hourglass pattern of similarities would be observed both within the taxon and across more distant species. Should this transcriptomic definition hold, evidence will be provided for the usefulness of ‘phylum’ as a biological classification. It may also suggest the delineation of new phyla, as well as the collapsing of previously distinct ones, requiring validation by zoological studies. 
+
+## Figures
+
+### Figure 2
+
+Many of the genes that have high expression early also have high expression late (i.e., red, blue, red). This profile was not considered, however, as each gene was fitted to being high in early, mid, or late.
+
+### Figure 3
+
+Question: How were the genes ordered in these plots?
+
+### Extended Data Figure 2
+
+Question: What are the axes in Extended Data Figure 2 a?
+
+### Extended Data Figure 3
+
+> For each pair of species a series of Kolmogorov–Smirnov
+tests are shown. Each test compares the intra-phase to the inter-
+phase correlations
+
+> The yellow boxes indicate those species comparisons where there is significant statistical evidence for the dual- phase pattern (higher significance for the middle tests).
+
+So the 9 blue boxes are the insignificant comparisons. They are:
+
+    C. elegans       - H. dujardini
+    P. dumerilii     - D. melanogaster
+    S. polychroa     - S. purpuratus
+    H. dujardini     - S. purpuratus
+    H. dujardini     - N. vectensis
+    S. purpuratus    - A. queenslandica
+    N. vectensis     - A. queenslandica
+    H. dujardini     - M. leidyi
+    A. queenslandica - M. leidyi
+
+Had a quick look in R:
+
+    x = c("C. elegans", "H. dujardini", "P. dumerilii", "D. melanogaster", "S. polychroa", "S. purpuratus", "H. dujardini", "S. purpuratus", "H. dujardini", "N. vectensis", "S. purpuratus", "A. queenslandica", "N. vectensis", "A. queenslandica", "H. dujardini", "M. leidyi", "A. queenslandica", "M. leidyi")
+    
+    
+    as.matrix(table(x))
+                     [,1]
+    A. queenslandica    3
+    C. elegans          1
+    D. melanogaster     1
+    H. dujardini        4
+    M. leidyi           2
+    N. vectensis        2
+    P. dumerilii        1
+    S. polychroa        1
+    S. purpuratus       3
+
+So H. dujardini, A. queenslandica, and S. purpuratus have the fewest significant tests.
 
 
 ## Methods
@@ -71,7 +132,13 @@ Author answer: "To classify a gene to the three phases strongly deviating genes 
 >
 >**Mid-developmental transition detection**
 >
->The transition period for each species was computed based upon the transcriptome similarities with the transcriptomes of the other species, shown in Fig. 3. The twenty transcriptomes were clustered using hierarchical clustering based upon the Euclidean distances among their profiles of correlations with the profiles of all other species. The two deepest clusters were then identified and the precise temporal window separating them was set as the mid-developmental transition period.
+>The transition period for each species was computed based upon the transcriptome similarities with the transcriptomes of the other species, shown in Fig. 3. The twenty transcriptomes were clustered using hierarchical clustering based upon the Euclidean distances among their profiles of correlations with the profiles of all other species. *The two deepest clusters were then identified and the precise temporal window separating them was set as the mid-developmental transition period.*
+
+Questions: Did these two clusters always correspond to an early and late phase? Was goodnes of fit to two clusters evaluated (e.g. were attenpts made to fit the data to more or fewer clusters)?
+
+The abstract states "We find that in all ten species, development comprises the coupling of early and late phases of conserved gene expression". It appears, though, that the data were fitted to this pattern without considering alternative hypotheses.
+
+
 >
 >**Gene Ontology (GO) enrichment analysis**
 >
