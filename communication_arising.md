@@ -1,7 +1,15 @@
 # Brief Communication Arising
 
 
-This document is the draft text for a "Brief Communication Arising" to Levin *et al.* 2016. The requirements of this format are described at the [Nature website]( http://www.nature.com/nature/authors/gta/commsarising.html). 
+This document is the text for a "Brief Communication Arising" to Levin *et al.* 2016. The requirements of this format are described at the [Nature website]( http://www.nature.com/nature/authors/gta/commsarising.html).
+
+After obtaining a response from Levin *et al.*, Nature declined to publish our "Brief Communication Arising". In their correspondence Levin *et al.* indicated that:
+
+- Excluding other taxa, not just the ctenophore, also led to insignificant results.
+
+- They had indeed inadvertently duplicated each pairwise comparison in their analyses, and that the Wilcoxon test would have been more appropriate
+
+- The inverse hourglass model was not the focus of their paper 
 
 
 Please see the [git repository](https://github.com/caseywdunn/levin2016) for this manuscript for additional information. We welcome feedback, via the [issue tracker](https://github.com/caseywdunn/levin2016/issues), pull requests, or email.
